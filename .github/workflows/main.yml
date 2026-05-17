@@ -1,1 +1,18 @@
+name: Build Workflow
 
+on: [workflow_dispatch]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repo
+                uses: actions/checkout@v3
+            -   name: Setup node
+                uses: actions/setup-node@v2
+                with:
+                    node-version: '14'
+            -   name: Run CI
+                run: npm ci
+            -   name: Run Tests
+                run: npm tests
